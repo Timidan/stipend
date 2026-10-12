@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tsbuildinfo
+backup/
+# Secrets: the drip's testnet key
+drip.env
+.env*
+!.env.example
+deploy/drip/
