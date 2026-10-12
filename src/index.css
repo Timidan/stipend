@@ -3,7 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Direction A, "Analyst's desk". See /DESIGN.md. */
 :root {
   --background: #F3F5F6;
   --foreground: #0F1214;
@@ -43,7 +42,6 @@
   --radius: 0.5rem;
   --brand: var(--foreground);
   --brand-light: var(--ink-2);
-  --brand-bitget: var(--muted-foreground);
   --brand-secondary: var(--ink-2);
   color-scheme: light;
   --amber: oklch(0.77 0.16 75);
@@ -175,21 +173,8 @@
   --radius-xl: 0.75rem;
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-press: cubic-bezier(0.2, 0, 0, 1);
-
-  /* Motion vocabulary: state changes only, never decoration. */
-  --animate-flash: tern-flash 1.2s var(--ease-out-quint);
-  --animate-rise: tern-rise 0.32s var(--ease-out-quint) both;
-  --animate-slide-in: tern-slide-in 0.18s var(--ease-out-quint) both;
-  --animate-grow: tern-grow 0.6s var(--ease-out-quint) both;
-  --animate-step: tern-grow 5.2s linear forwards;
-
-  @keyframes tern-flash { from { background-color: color-mix(in oklab, var(--highlight) 55%, transparent); } to { background-color: transparent; } }
-  @keyframes tern-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-  @keyframes tern-slide-in { from { opacity: 0; transform: translateX(6px); } to { opacity: 1; transform: none; } }
-  @keyframes tern-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   --color-brand: var(--brand, oklch(0.72 0.2 352.53));
   --color-brand-light: var(--brand-light, oklch(0.78 0.15 352.53));
-  --color-brand-bitget: var(--brand-bitget, oklch(0.85 0.1 352.53));
   --color-brand-secondary: var(--brand-secondary, oklch(0.66 0.21 354.31));
   --color-amber: var(--amber);
   --color-amber-fg: var(--amber-fg);
@@ -242,7 +227,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Data chrome only (column heads, stat labels): Murmur's mono label, never a section eyebrow. 12px floor. */
 @utility label-mono {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -262,21 +246,6 @@
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; transition-delay: 0s !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 
-/* Hand-drawn scenes (components/illustrations.tsx): resting state is fully drawn; .is-playing sketches them in stroke by stroke. */
-@keyframes tern-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-@keyframes tern-pop { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }
-.tern-ill [data-draw] { stroke-dasharray: 1; stroke-dashoffset: 0; }
-.tern-ill.is-playing [data-draw] { animation: tern-draw 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: calc(var(--i) * 55ms); }
-.tern-ill.is-playing [data-accent] { animation-duration: 0.45s; animation-timing-function: cubic-bezier(0.2, 0, 0, 1); }
-.tern-ill [data-pop] { transform-box: fill-box; transform-origin: center; }
-.tern-ill.is-playing [data-pop] { animation: tern-pop 0.3s ease-out both; animation-delay: calc(var(--i) * 55ms); }
-
-/* Scroll story backdrop (components/sequence.tsx): a faint photo per step, blended into that step's page wash. */
-.tern-photos { opacity: 0.2; }
-.tern-photo { background-image: var(--photo); }
-.dark .tern-photos { opacity: 0.09; }
-.dark .tern-photo { background-image: var(--photo-dark); }
-
 /* Icon morphs (components/icons.tsx): a Phosphor icon inside a real button nudges on press, keyboard focus,
    or hover with a fine pointer. Icon() tags each one `glyph glyph-<name>`; transforms move the whole icon. */
 :root {
@@ -288,7 +257,7 @@
   @keyframes glyph-wiggle { 30% { transform: rotate(-14deg); } 70% { transform: rotate(10deg); } }
   .glyph { transition: transform 340ms var(--ease-spring); }
 
-  :where(button, [data-slot="button"], .tap, .icon-btn, [role="tab"], [role="radio"], nav[aria-label="Main"] a) {
+  :where(button, [data-slot="button"], .tap, [role="tab"], [role="radio"], nav[aria-label="Main"] a) {
     &:is(:focus-visible, :active) {
       .glyph-arrow-right { transform: translateX(2px); }
       .glyph-arrow-up-right { transform: translate(1.6px, -1.6px); }

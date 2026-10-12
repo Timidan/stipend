@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "cn"
 import { Slot } from "radix-ui"
 
-// Trailing icons carry .trail (optical padding keys off it). Press 100 ms on a sharp curve, hover 140 ms, trailing icon (.trail) slides 3px: see DESIGN.md "Motion".
+// Trailing icons carry .trail (optical padding keys off it). Press 100 ms on a sharp curve, hover 140 ms, trailing icon (.trail) slides 3px.
 const buttonVariants = cva(
   "relative inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap select-none transition-[background-color,border-color,color,box-shadow,scale] duration-[140ms] ease-out active:scale-[0.96] active:duration-100 active:ease-[cubic-bezier(0.2,0,0,1)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-45 aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_.trail]:transition-transform [&_.trail]:duration-200 [&_.trail]:ease-out hover:[&_.trail]:translate-x-[0.1875rem]",
   {

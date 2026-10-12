@@ -1,12 +1,5 @@
-import { isAddress, parseUnits, type Address } from 'viem';
-import { revertReason, type Allowance, type Step } from './stipend';
-
-export function amount(text: string): bigint {
-  if (!/^\d+(\.\d{1,6})?$/.test(text)) throw new Error('Enter an AUSD amount with up to six decimal places.');
-  const value = parseUnits(text, 6);
-  if (value <= 0n) throw new Error('Enter an amount above zero.');
-  return value;
-}
+import { isAddress, type Address } from 'viem';
+import { revertReason, type Allowance } from './stipend';
 
 export function readAllowances(owner: Address, play: Address = owner): Allowance[] {
   const data: unknown = JSON.parse(localStorage.getItem(`stipend:allowances:${owner.toLowerCase()}`) ?? '[]');
@@ -24,15 +17,6 @@ export function readAllowances(owner: Address, play: Address = owner): Allowance
 }
 export function saveAllowances(owner: Address, rows: Allowance[]) {
   localStorage.setItem(`stipend:allowances:${owner.toLowerCase()}`, JSON.stringify(rows, (_, v) => typeof v === 'bigint' ? v.toString() : v));
-}
-
-export type Activity = Step & { at: number; owner: Address };
-export async function history(owner: Address, add: Activity[] = []): Promise<Activity[]> {
-  const key = `stipend:activity:${owner.toLowerCase()}`;
-  const stored = JSON.parse(localStorage.getItem(key) ?? '[]') as Activity[];
-  const rows = [...add, ...stored].filter((row, i, all) => all.findIndex(x => x.hash === row.hash) === i).sort((a, b) => b.at - a.at).slice(0, 50);
-  if (add.length) localStorage.setItem(key, JSON.stringify(rows));
-  return rows;
 }
 
 export function plainError(error: unknown): { message: string; detail?: string } {
