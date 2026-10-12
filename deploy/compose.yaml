@@ -1,0 +1,31 @@
+name: stipend
+services:
+  web:
+    image: caddy:2
+    restart: unless-stopped
+    volumes:
+      - ../dist:/srv:ro
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      default: {}
+      public_proxy:
+        aliases: [stipend-web]
+  drip:
+    image: node:22-alpine
+    restart: unless-stopped
+    # The drip listens on 127.0.0.1 only; sharing web's network namespace lets Caddy reach it and nothing else.
+    network_mode: "service:web"
+    depends_on: [web]
+    user: node
+    working_dir: /app
+    command: ["node", "server.mjs"]
+    volumes:
+      - ./drip:/app:ro
+    env_file: ./drip.env
+    environment:
+      ALLOW_ORIGIN: https://stipend.timidan.xyz
+      RPC_URL: https://testnet-rpc.monad.xyz
+      PORT: "8797"
+networks:
+  public_proxy:
+    external: true

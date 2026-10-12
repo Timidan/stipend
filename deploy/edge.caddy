@@ -1,0 +1,9 @@
+# Site block for the shared edge Caddy on the public_proxy network.
+# Cloudflare proxies the hostname; the cloudflare_only snippet holds the origin certificate and drops direct traffic.
+stipend.timidan.xyz {
+	import cloudflare_only
+	encode zstd gzip
+	reverse_proxy stipend-web:80 {
+		header_up X-Forwarded-For {http.request.header.CF-Connecting-IP}
+	}
+}
