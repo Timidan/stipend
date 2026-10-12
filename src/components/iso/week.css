@@ -1,0 +1,29 @@
+.aw{position:relative;width:100%;color:var(--anatomy-hi,#303b41);touch-action:pan-y}
+.aw-svg{display:block;width:100%;height:auto;overflow:visible}
+.aw-svg path,.aw-svg circle{vector-effect:non-scaling-stroke}
+.aw .iso-fill{fill:var(--anatomy-paper,#f7f9f9);stroke:none}
+.aw .iso-shade,.aw .iso-top{stroke:none}
+.aw .iso-shade[data-shade="0"]{fill:var(--anatomy-shade-0,#b7c3c9)}
+.aw .iso-shade[data-shade="1"]{fill:var(--anatomy-shade-1,#c9d2d6)}
+.aw .iso-shade[data-shade="2"]{fill:var(--anatomy-shade-2,#dde4e7)}
+.aw .iso-shade[data-shade="3"]{fill:var(--anatomy-shade-3,#edf1f2)}
+.aw .iso-top{fill:var(--anatomy-top,#fcfdfd)}
+.aw .iso-line{fill:none;stroke:var(--anatomy-lo,#809098);stroke-width:.6;stroke-linecap:round;stroke-linejoin:round}
+.aw .iso-line[data-tone="hi"]{stroke:var(--anatomy-hi,#303b41)}
+.aw .iso-line[data-tone="mid"]{stroke:var(--anatomy-mid,#64757e)}
+.aw .iso-line[data-tone="faint"]{stroke:var(--anatomy-faint,#b2bec4)}
+.aw .iso-solid[data-lit]>.iso-fill,.aw .iso-solid[data-lit]>.iso-top,.aw .iso-solid[data-lit]>.iso-shade{fill:var(--event,#D2F800)}
+.aw .iso-solid[data-lit]>.iso-edge{stroke:var(--anatomy-hi,#303b41)}
+.aw .iso-halo{fill:var(--anatomy-halo,#768991);opacity:.2;filter:blur(7px);stroke:none}
+.aw .aw-engraving,.aw .iso-face-text{fill:var(--anatomy-mid,#64757e)}
+.aw .aw-slot{fill:var(--anatomy-hi,#303b41)}
+.aw .iso-dots circle{fill:var(--anatomy-mid,#64757e)}
+.aw .iso-face-text{font-family:ui-monospace,monospace}
+.aw-readout{min-height:2.8em;font-size:11px;line-height:1.4;margin:8px 0 0}
+.aw-caption{font-size:10px;line-height:1.5;color:var(--anatomy-mid,#64757e);margin:5px 0 0}
+.aw-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.aw:focus-visible{outline:1px solid var(--anatomy-muted,#64757e);outline-offset:6px}
+.aw .aw-charge .iso-fill,.aw .aw-charge .iso-top,.aw .aw-charge .iso-shade{fill:currentColor}
+.aw .aw-fingerprint .iso-line{stroke:currentColor}
+@media(prefers-reduced-motion:reduce){.aw .aw-fingerprint{color:var(--anatomy-lo,#809098)}}
