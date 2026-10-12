@@ -8,6 +8,7 @@ const AUSD = '0xa9012a055bd4e0eDfF8Ce09f960291C09D5322dC';
 const FAUCET = '0xd236c18D274E54FAccC3dd9DDA4b27965a73ee6C';
 const abi = parseAbi(['function balanceOf(address) view returns (uint256)', 'function transfer(address,uint256) returns (bool)', 'function requestFunds(address)', 'error MaxFrequencyExceeded()']);
 const DAY = 24 * 60 * 60 * 1000;
+const RETRY = 60 * 1000;
 let lastBroadcast = 0;
 
 export function validateRecipients(body) {
@@ -27,6 +28,7 @@ export function startDrip() {
   const client = createPublicClient({ chain: monadTestnet, transport });
   const wallet = createWalletClient({ chain: monadTestnet, transport, account: privateKeyToAccount(DRIP_PRIVATE_KEY) });
   const claimed = new Map();
+  const settling = new Map();
   let working = false;
   const server = createServer(async (req, res) => {
     const txs = [];
@@ -50,9 +52,12 @@ export function startDrip() {
     const ids = [recipients.vault.toLowerCase(), recipients.play.toLowerCase()];
     for (const [id, at] of claimed) if (Date.now() - at >= DAY) claimed.delete(id);
     if (ids.some(id => claimed.has(id))) return reply(429, { error: 'These addresses can receive test tokens once every 24 hours.' });
+    for (const [id, at] of settling) if (Date.now() - at >= RETRY) settling.delete(id);
+    if (ids.some(id => settling.has(id))) return reply(429, { error: 'The last attempt is still settling. Try again in a minute.' });
     working = true;
+    let sent = false;
     const confirm = async (label, hash) => {
-      for (const id of ids) claimed.set(id, Date.now());
+      sent = true;
       const receipt = await client.waitForTransactionReceipt({ hash });
       if (receipt.status !== 'success') throw new Error('Test-token transfer reverted.');
       txs.push({ label, hash });
@@ -89,6 +94,8 @@ export function startDrip() {
       for (const id of ids) claimed.set(id, Date.now());
       reply(200, { txs });
     } catch (error) {
+      // A retry skips whatever already arrived, so a partial failure only holds the addresses for a minute.
+      if (sent) for (const id of ids) settling.set(id, Date.now());
       console.error('drip failed:', error?.shortMessage ?? error?.message);
       reply(503, { error: 'The drip could not finish. Try again in a minute.', txs });
     } finally { working = false; }
