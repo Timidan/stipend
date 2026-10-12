@@ -1,0 +1,353 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Direction A, "Analyst's desk". See /DESIGN.md. */
+:root {
+  --background: #F3F5F6;
+  --foreground: #0F1214;
+  --card: #FFFFFF;
+  --card-foreground: #0F1214;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F1214;
+  --primary: #0F1214;
+  --primary-foreground: #FFFFFF;
+  --primary-hover: #2A3035;
+  --event: #D2F800;
+  --event-edge: #B5D400;
+  --event-foreground: #0F1214;
+  --secondary: #FFFFFF;
+  --secondary-foreground: #0F1214;
+  --muted: #EDF0F2;
+  --muted-foreground: #556068;
+  --accent: #EDF0F2;
+  --accent-foreground: #0F1214;
+  --destructive: #AF3526;
+  --border: #E0E4E7;
+  --input: #C9D0D5;
+  --ring: #0F1214;
+  --ink-2: #2A3035;
+  --highlight: #E6FB63;
+  --highlight-strong: #D2F800;
+  --highlight-foreground: #0F1214;
+  --bull: #08704F;
+  --bull-soft: #E0F2EA;
+  --bear: #AF3526;
+  --bear-soft: #FBE7E3;
+  --wait: #6A5200;
+  --wait-soft: #FBF1D2;
+  --live: #16A34A;
+  --flat: #98A2AA;
+  --flat-light: #C8CFD4;
+  --radius: 0.5rem;
+  --brand: var(--foreground);
+  --brand-light: var(--ink-2);
+  --brand-bitget: var(--muted-foreground);
+  --brand-secondary: var(--ink-2);
+  color-scheme: light;
+  --amber: oklch(0.77 0.16 75);
+  --amber-fg: oklch(0.22 0 0);
+  --amber-hover: oklch(0.71 0.17 70);
+  --blue: oklch(0.62 0.19 256);
+  --blue-fg: #fff;
+  --blue-hover: oklch(0.56 0.2 256);
+  --green: oklch(0.7 0.17 152);
+  --green-fg: #fff;
+  --green-hover: oklch(0.64 0.18 152);
+  --smooth-50: oklch(0.99 0 0);
+  --smooth-100: oklch(0.972 0 0);
+  --smooth-200: oklch(0.945 0 0);
+  --smooth-300: oklch(0.91 0 0);
+  --smooth-400: oklch(0.865 0 0);
+  --smooth-500: oklch(0.81 0 0);
+  --smooth-600: oklch(0.74 0 0);
+  --smooth-700: oklch(0.66 0 0);
+  --smooth-800: oklch(0.56 0 0);
+  --smooth-900: oklch(0.47 0 0);
+  --smooth-950: oklch(0.36 0 0);
+  --smooth-1000: oklch(0.22 0 0);
+}
+
+.dark {
+  --background: #0D0F11;
+  --anatomy-paper: #192226; --anatomy-face: #253138; --anatomy-top: #35434C; --anatomy-shade-0: #172127; --anatomy-shade-1: #202D35; --anatomy-shade-2: #293841; --anatomy-shade-3: #33444E;
+  --anatomy-hi: #E0E8ED; --anatomy-mid: #A3B3BD; --anatomy-lo: #637985; --anatomy-faint: #455963; --anatomy-halo: #05090B;
+  --foreground: #EEF1F2;
+  --card: #15181B;
+  --card-foreground: #EEF1F2;
+  --popover: #1C2023;
+  --popover-foreground: #EEF1F2;
+  --primary: #EEF1F2;
+  --primary-foreground: #0D0F11;
+  --primary-hover: #D2D8DC;
+  --event: #D2F800;
+  --event-edge: #B5D400;
+  --event-foreground: #0F1214;
+  --secondary: #1C2023;
+  --secondary-foreground: #EEF1F2;
+  --muted: #1C2023;
+  --muted-foreground: #9AA3AA;
+  --accent: #22272B;
+  --accent-foreground: #EEF1F2;
+  --destructive: #FF8C77;
+  --border: #262B30;
+  --input: #353C42;
+  --ring: #EEF1F2;
+  --ink-2: #CDD3D7;
+  --highlight: #D2F800;
+  --highlight-strong: #E4FF4D;
+  --highlight-foreground: #0F1214;
+  --bull: #5CD8AC;
+  --bull-soft: rgb(92 216 172 / 0.13);
+  --bear: #FF8C77;
+  --bear-soft: rgb(255 140 119 / 0.13);
+  --wait: #F2CC60;
+  --wait-soft: rgb(242 204 96 / 0.12);
+  --live: #4ADE80;
+  --flat: #6B747C;
+  --flat-light: #454D54;
+  color-scheme: dark;
+  --amber: oklch(0.8 0.15 75);
+  --amber-fg: oklch(0.2 0 0);
+  --amber-hover: oklch(0.85 0.14 72);
+  --blue: oklch(0.66 0.18 256);
+  --blue-fg: #fff;
+  --blue-hover: oklch(0.72 0.16 256);
+  --green: oklch(0.73 0.16 152);
+  --green-fg: oklch(0.2 0 0);
+  --green-hover: oklch(0.79 0.15 152);
+  --smooth-50: oklch(0.2 0 0);
+  --smooth-100: oklch(0.235 0 0);
+  --smooth-200: oklch(0.275 0 0);
+  --smooth-300: oklch(0.315 0 0);
+  --smooth-400: oklch(0.36 0 0);
+  --smooth-500: oklch(0.41 0 0);
+  --smooth-600: oklch(0.47 0 0);
+  --smooth-700: oklch(0.55 0 0);
+  --smooth-800: oklch(0.66 0 0);
+  --smooth-900: oklch(0.74 0 0);
+  --smooth-950: oklch(0.85 0 0);
+  --smooth-1000: oklch(0.96 0 0);
+}
+
+@theme inline {
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-event: var(--event);
+  --color-event-edge: var(--event-edge);
+  --color-event-foreground: var(--event-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink-2: var(--ink-2);
+  --color-highlight: var(--highlight);
+  --color-highlight-strong: var(--highlight-strong);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-bull: var(--bull);
+  --color-bull-soft: var(--bull-soft);
+  --color-bear: var(--bear);
+  --color-bear-soft: var(--bear-soft);
+  --color-wait: var(--wait);
+  --color-wait-soft: var(--wait-soft);
+  --color-live: var(--live);
+  --color-flat: var(--flat);
+  --color-flat-light: var(--flat-light);
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: var(--radius);
+  --radius-xl: 0.75rem;
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-press: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Motion vocabulary: state changes only, never decoration. */
+  --animate-flash: tern-flash 1.2s var(--ease-out-quint);
+  --animate-rise: tern-rise 0.32s var(--ease-out-quint) both;
+  --animate-slide-in: tern-slide-in 0.18s var(--ease-out-quint) both;
+  --animate-grow: tern-grow 0.6s var(--ease-out-quint) both;
+  --animate-step: tern-grow 5.2s linear forwards;
+
+  @keyframes tern-flash { from { background-color: color-mix(in oklab, var(--highlight) 55%, transparent); } to { background-color: transparent; } }
+  @keyframes tern-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @keyframes tern-slide-in { from { opacity: 0; transform: translateX(6px); } to { opacity: 1; transform: none; } }
+  @keyframes tern-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  --color-brand: var(--brand, oklch(0.72 0.2 352.53));
+  --color-brand-light: var(--brand-light, oklch(0.78 0.15 352.53));
+  --color-brand-bitget: var(--brand-bitget, oklch(0.85 0.1 352.53));
+  --color-brand-secondary: var(--brand-secondary, oklch(0.66 0.21 354.31));
+  --color-amber: var(--amber);
+  --color-amber-fg: var(--amber-fg);
+  --color-amber-hover: var(--amber-hover);
+  --color-blue: var(--blue);
+  --color-blue-fg: var(--blue-fg);
+  --color-blue-hover: var(--blue-hover);
+  --color-green: var(--green);
+  --color-green-fg: var(--green-fg);
+  --color-green-hover: var(--green-hover);
+  --color-smooth-50: var(--smooth-50);
+  --color-smooth-100: var(--smooth-100);
+  --color-smooth-200: var(--smooth-200);
+  --color-smooth-300: var(--smooth-300);
+  --color-smooth-400: var(--smooth-400);
+  --color-smooth-500: var(--smooth-500);
+  --color-smooth-600: var(--smooth-600);
+  --color-smooth-700: var(--smooth-700);
+  --color-smooth-800: var(--smooth-800);
+  --color-smooth-900: var(--smooth-900);
+  --color-smooth-950: var(--smooth-950);
+  --color-smooth-1000: var(--smooth-1000)
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  /* The whole UI is sized in rem, so this one value scales every component: 16px on phones and laptops,
+     growing smoothly to 19px on very wide screens where a desktop-default layout would look tiny. */
+  html { -webkit-text-size-adjust: 100%; font-size: clamp(100%, 75% + 0.35vw, 118.75%);
+  scroll-padding-block: calc(4.5rem + env(safe-area-inset-top)) calc(6rem + env(safe-area-inset-bottom)); }
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01" on;
+  }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  button, [role="button"], summary { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+  ::selection { background: var(--highlight); color: var(--highlight-foreground); }
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Data chrome only (column heads, stat labels): Murmur's mono label, never a section eyebrow. 12px floor. */
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+/* Button's press for hand-rolled controls. Tailwind v4 scale is its own property, so it must be in the transition list. */
+@utility tap {
+  transition: color 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, scale 140ms ease-out;
+  &:active { scale: 0.96; transition-duration: 100ms; transition-timing-function: var(--ease-press); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; transition-delay: 0s !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Hand-drawn scenes (components/illustrations.tsx): resting state is fully drawn; .is-playing sketches them in stroke by stroke. */
+@keyframes tern-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes tern-pop { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }
+.tern-ill [data-draw] { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.tern-ill.is-playing [data-draw] { animation: tern-draw 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: calc(var(--i) * 55ms); }
+.tern-ill.is-playing [data-accent] { animation-duration: 0.45s; animation-timing-function: cubic-bezier(0.2, 0, 0, 1); }
+.tern-ill [data-pop] { transform-box: fill-box; transform-origin: center; }
+.tern-ill.is-playing [data-pop] { animation: tern-pop 0.3s ease-out both; animation-delay: calc(var(--i) * 55ms); }
+
+/* Scroll story backdrop (components/sequence.tsx): a faint photo per step, blended into that step's page wash. */
+.tern-photos { opacity: 0.2; }
+.tern-photo { background-image: var(--photo); }
+.dark .tern-photos { opacity: 0.09; }
+.dark .tern-photo { background-image: var(--photo-dark); }
+
+/* Icon morphs (components/icons.tsx): a Phosphor icon inside a real button nudges on press, keyboard focus,
+   or hover with a fine pointer. Icon() tags each one `glyph glyph-<name>`; transforms move the whole icon. */
+:root {
+  --ease-spring: linear(0, 0.073, 0.251, 0.478, 0.707, 0.906, 1.056, 1.153, 1.199, 1.204, 1.179, 1.137, 1.089, 1.044, 1.006, 0.979, 0.964, 0.958, 0.959, 0.966, 0.976, 0.985, 0.994, 1.001, 1.006);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes glyph-pop { 50% { transform: scale(1.22); } }
+  @keyframes glyph-wiggle { 30% { transform: rotate(-14deg); } 70% { transform: rotate(10deg); } }
+  .glyph { transition: transform 340ms var(--ease-spring); }
+
+  :where(button, [data-slot="button"], .tap, .icon-btn, [role="tab"], [role="radio"], nav[aria-label="Main"] a) {
+    &:is(:focus-visible, :active) {
+      .glyph-arrow-right { transform: translateX(2px); }
+      .glyph-arrow-up-right { transform: translate(1.6px, -1.6px); }
+      .glyph-arrow-down, .glyph-faucet { transform: translateY(2px); }
+      .glyph-arrow-up { transform: translateY(-2px); }
+      .glyph-close { transform: rotate(90deg); }
+      .glyph-gauge { transform: rotate(18deg); }
+      .glyph-key, .glyph-bank { animation: glyph-wiggle 420ms var(--ease-out-quint); }
+      .glyph-check, .glyph-shield, .glyph-home, .glyph-order, .glyph-calendar, .glyph-activity, .glyph-info, .glyph-alert { animation: glyph-pop 320ms var(--ease-out-quint); }
+    }
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        .glyph-arrow-right { transform: translateX(2px); }
+        .glyph-arrow-up-right { transform: translate(1.6px, -1.6px); }
+        .glyph-arrow-down, .glyph-faucet { transform: translateY(2px); }
+        .glyph-arrow-up { transform: translateY(-2px); }
+        .glyph-close { transform: rotate(90deg); }
+        .glyph-gauge { transform: rotate(18deg); }
+        .glyph-key, .glyph-bank { animation: glyph-wiggle 420ms var(--ease-out-quint); }
+        .glyph-check, .glyph-shield, .glyph-home, .glyph-order, .glyph-calendar, .glyph-activity, .glyph-info, .glyph-alert { animation: glyph-pop 320ms var(--ease-out-quint); }
+      }
+    }
+  }
+}
+
+@keyframes vault-spin { to { transform: rotate(360deg); } }
+/* Ring dial (components/ring-puzzle.tsx): every ring is its own <svg> layer, rotated by CSS so the GPU turns a pre-drawn texture. */
+.hud-layer { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.hud-spin { animation: vault-spin var(--hud-t, 90s) linear infinite; }
+.hud-spin.rev { animation-direction: reverse; }
+.ring-layer { transition: transform 520ms var(--ease-spring); will-change: transform; }
+.ring-layer.is-dragging { transition: none; }
+.ring-piece { pointer-events: visiblePainted; touch-action: none; outline: none; }
+.ring-piece:focus-visible > path:first-child { stroke: var(--event); stroke-width: 5; }
+.hud.is-held .hud-spin { animation-play-state: paused; }
+.hud-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; fill: var(--muted-foreground); }
+.hud-readout { font-size: 10.5px; fill: var(--foreground); }
+@media (prefers-reduced-motion: reduce) { .hud-spin { animation: none; } .ring-layer { transition: none; } }
+.vault-orbit { transform-box: view-box; transform-origin: 200px 200px; animation: vault-spin 60s linear infinite; }
+.vault-orbit-rev { animation-direction: reverse; }
+@media (prefers-reduced-motion: reduce) { .vault-orbit { animation: none; } }
+
+.app-backdrop { background: var(--background); overflow: hidden; }
+.app-backdrop::before, .app-backdrop::after {
+  content: ''; position: absolute; z-index: -1; width: 120vmax; height: 120vmax; border-radius: 50%; will-change: transform;
+}
+.app-backdrop::before {
+  top: -60vmax; right: -50vmax;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--event) 38%, transparent), transparent);
+  animation: backdrop-drift-a 16s ease-in-out infinite alternate;
+}
+.app-backdrop::after {
+  bottom: -62vmax; left: -55vmax;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--bull) 26%, transparent), transparent);
+  animation: backdrop-drift-b 21s ease-in-out infinite alternate;
+}
+.app-backdrop.shader-on::before, .app-backdrop.shader-on::after { content: none; }
+@keyframes backdrop-drift-a { to { transform: translate(-38vmax, 30vmax) scale(1.2); } }
+@keyframes backdrop-drift-b { to { transform: translate(34vmax, -36vmax) scale(1.15); } }
+@media (prefers-reduced-motion: reduce) { .app-backdrop::before, .app-backdrop::after { animation: none; } }
+.safe-bottom { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
+.safe-top { padding-top: max(0.5rem, env(safe-area-inset-top)); }

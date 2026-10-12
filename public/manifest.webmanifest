@@ -1,0 +1,31 @@
+{
+  "id": "/",
+  "name": "Stipend",
+  "short_name": "Stipend",
+  "description": "Savings in AUSD. A weekly slice to trade on Perpl. Monad testnet.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F3F5F6",
+  "theme_color": "#F3F5F6",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
